@@ -11,7 +11,13 @@ fn print_usage() -> i32 {
 fn evaluate(expr: &String) -> i32 {
     let r = meval::eval_str(&expr);
     match r {
-        Ok(value) => println!("{:?}", value),
+        Ok(value) => {
+            if value == value.trunc() {
+                println!("{:?}", value as i64)
+            } else {
+                println!("{:?}", value)
+            }
+        },
         _ => println!("Something went horribly wrong")
     }
     0
